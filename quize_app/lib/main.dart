@@ -1,4 +1,3 @@
-import "dart:ui";
 
 import "package:flutter/material.dart";
 
@@ -131,249 +130,247 @@ class QuizeAppState extends State {
             ),
             backgroundColor: const Color.fromARGB(255, 164, 225, 255),
           ),
-          body: Container(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Text(
-                        "Queations : ",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "${questionIndex + 1} / ${allQuestions.length}",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Text(
-                        "Score : ",
-                        style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "${score} / ${allQuestions.length}",
-                        style: const TextStyle(
-                            color: Colors.green,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    width: 330,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: const Color.fromARGB(255, 164, 225, 255),
-                    ),
-                    child: Text(
-                      allQuestions[questionIndex].quesations,
+          body:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            const SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                const Text(
+                  "Queations : ",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  "${questionIndex + 1} / ${allQuestions.length}",
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                const Text(
+                  "Score : ",
+                  style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  "$score / ${allQuestions.length}",
+                  style: const TextStyle(
+                      color: Colors.green,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              alignment: Alignment.center,
+              width: 330,
+              height: 150,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: const Color.fromARGB(255, 164, 225, 255),
+              ),
+              child: Text(
+                allQuestions[questionIndex].quesations,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  if (choiceAnsIndex == -1) {
+                    setState(() {
+                      choiceAnsIndex = 0;
+                      optionselected = true;
+                    });
+                    if (allQuestions[questionIndex].ansIndex ==
+                        choiceAnsIndex) {
+                      score++;
+                    }
+                    setState(() {});
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: getColor(0),
+                    fixedSize: const Size(270, 48)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "    A.    ${allQuestions[questionIndex].options[0]}",
                       style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
+                          fontSize: 18.5,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const Spacer(),
+                    getSign(0)
+                  ],
+                )),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  if (choiceAnsIndex == -1) {
+                    setState(() {
+                      choiceAnsIndex = 1;
+                      optionselected = true;
+                    });
+                    if (allQuestions[questionIndex].ansIndex ==
+                        choiceAnsIndex) {
+                      score++;
+                    }
+                    setState(() {});
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: getColor(1),
+                    fixedSize: const Size(270, 48)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "    B    ${allQuestions[questionIndex].options[1]}",
+                      style: const TextStyle(
+                          fontSize: 18.5,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const Spacer(),
+                    getSign(1)
+                  ],
+                )),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  if (choiceAnsIndex == -1) {
+                    setState(() {
+                      choiceAnsIndex = 2;
+                      optionselected = true;
+                    });
+                    if (allQuestions[questionIndex].ansIndex ==
+                        choiceAnsIndex) {
+                      score++;
+                    }
+                    setState(() {});
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: getColor(2),
+                    fixedSize: const Size(270, 48)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "    C.    ${allQuestions[questionIndex].options[2]}",
+                      style: const TextStyle(
+                          fontSize: 18.5,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const Spacer(),
+                    getSign(2)
+                  ],
+                )),
+            const SizedBox(
+              height: 15,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  if (choiceAnsIndex == -1) {
+                    setState(() {
+                      choiceAnsIndex = 3;
+                      optionselected = true;
+                    });
+                    if (allQuestions[questionIndex].ansIndex ==
+                        choiceAnsIndex) {
+                      score++;
+                    }
+                    setState(() {});
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: getColor(3),
+                    fixedSize: const Size(270, 48)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "    D.    ${allQuestions[questionIndex].options[3]}",
+                      style: const TextStyle(
+                          fontSize: 18.5,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const Spacer(),
+                    getSign(3)
+                  ],
+                )),
+            const SizedBox(
+              height: 20,
+            ),
+            (choiceAnsIndex != -1)
+                ? Container(
+                    height: 120,
+                    width: 350,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(children: [
+                      const SizedBox(
+                        width: 20,
                       ),
+                      Container(
+                          alignment: Alignment.center,
+                          height: 120,
+                          width: 300,
+                          child: Text(
+                            allQuestions[questionIndex].explanation,
+                            style: const TextStyle(fontSize: 17),
+                          ))
+                    ]),
+                  )
+                : Container(),
+            (optionselected == true)
+                ? const SizedBox()
+                : const SizedBox(
+                    child: Text(
+                      "please select an option",
+                      style: TextStyle(fontSize: 18, color: Colors.red),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (choiceAnsIndex == -1) {
-                          setState(() {
-                            choiceAnsIndex = 0;
-                            optionselected = true;
-                          });
-                          if (allQuestions[questionIndex].ansIndex ==
-                              choiceAnsIndex) {
-                            score++;
-                          }
-                          setState(() {});
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: getColor(0),
-                          fixedSize: const Size(270, 48)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "    A.    ${allQuestions[questionIndex].options[0]}",
-                            style: const TextStyle(
-                                fontSize: 18.5,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          const Spacer(),
-                          getSign(0)
-                        ],
-                      )),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (choiceAnsIndex == -1) {
-                          setState(() {
-                            choiceAnsIndex = 1;
-                            optionselected = true;
-                          });
-                          if (allQuestions[questionIndex].ansIndex ==
-                              choiceAnsIndex) {
-                            score++;
-                          }
-                          setState(() {});
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: getColor(1),
-                          fixedSize: const Size(270, 48)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "    B    ${allQuestions[questionIndex].options[1]}",
-                            style: const TextStyle(
-                                fontSize: 18.5,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          const Spacer(),
-                          getSign(1)
-                        ],
-                      )),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (choiceAnsIndex == -1) {
-                          setState(() {
-                            choiceAnsIndex = 2;
-                            optionselected = true;
-                          });
-                          if (allQuestions[questionIndex].ansIndex ==
-                              choiceAnsIndex) {
-                            score++;
-                          }
-                          setState(() {});
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: getColor(2),
-                          fixedSize: const Size(270, 48)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "    C.    ${allQuestions[questionIndex].options[2]}",
-                            style: const TextStyle(
-                                fontSize: 18.5,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          const Spacer(),
-                          getSign(2)
-                        ],
-                      )),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (choiceAnsIndex == -1) {
-                          setState(() {
-                            choiceAnsIndex = 3;
-                            optionselected = true;
-                          });
-                          if (allQuestions[questionIndex].ansIndex ==
-                              choiceAnsIndex) {
-                            score++;
-                          }
-                          setState(() {});
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: getColor(3),
-                          fixedSize: const Size(270, 48)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "    D.    ${allQuestions[questionIndex].options[3]}",
-                            style: const TextStyle(
-                                fontSize: 18.5,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          const Spacer(),
-                          getSign(3)
-                        ],
-                      )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  (choiceAnsIndex != -1)
-                      ? Container(
-                          height: 120,
-                          width: 350,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Row(children: [
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                alignment: Alignment.center,
-                                height: 120,
-                                width: 300,
-                                child: Text(
-                                  allQuestions[questionIndex].explanation,
-                                  style: TextStyle(fontSize: 17),
-                                ))
-                          ]),
-                        )
-                      : Container(),
-                  (optionselected == true)
-                      ? const SizedBox()
-                      : const SizedBox(
-                          child: Text(
-                            "please select an option",
-                            style: TextStyle(fontSize: 18, color: Colors.red),
-                          ),
-                        ),
-                ]),
-          ));
+          ]));
     } else {
       return Scaffold(
           appBar: AppBar(
@@ -389,7 +386,7 @@ class QuizeAppState extends State {
               "Tech Quize",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
             ),
-            backgroundColor: Color.fromARGB(255, 114, 195, 236),
+            backgroundColor: const Color.fromARGB(255, 114, 195, 236),
           ),
           body: Container(
               alignment: Alignment.center,
@@ -403,7 +400,7 @@ class QuizeAppState extends State {
                       color: Colors.black.withOpacity(0.6),
                       spreadRadius: 12,
                       blurRadius: 28,
-                      offset: Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3), // changes position of shadow
                     ),
                   ],
                 ),
@@ -442,7 +439,7 @@ class QuizeAppState extends State {
                     height: 15,
                   ),
                   Text(
-                    "Score : ${score}/${allQuestions.length}",
+                    "Score : $score/${allQuestions.length}",
                     style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -498,7 +495,7 @@ class QuizeAppState extends State {
         backgroundColor: Colors.red,
         radius: 10,
         child: Icon(
-          Icons.check,
+          Icons.close,
           size: 15,
         ),
       );
